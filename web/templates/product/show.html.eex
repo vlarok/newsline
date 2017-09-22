@@ -1,0 +1,25 @@
+<h2>Show product</h2>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @product.title %>
+  </li>
+
+  <li>
+    <strong>Body:</strong>
+    <%= @product.body %>
+  </li>
+
+</ul>
+
+<%= render Newsline.CommentView, "new.html", conn: @conn, product: @product, comment_changeset: @comment_changeset %>
+
+<ul>
+  <%= for comment <- @product.comments do %>
+    <li><%= comment.body %></li>
+    <% end %>
+</ul>
+<%= link "Edit", to: product_path(@conn, :edit, @product) %>
+<%= link "Back", to: product_path(@conn, :index) %>
